@@ -8,8 +8,7 @@ metadata:
 managedNodeGroups:
   - name: roboshop-dev2
     instanceTypes:
-      - t3.medium
-      - t3a.medium
-      - t2.medium
+      - m7i-flex.large
+      - m7i-flex.large
     desiredCapacity: 2
     spot: true
