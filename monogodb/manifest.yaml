@@ -27,3 +27,23 @@ spec:
       containers:
         - name: mongodb
           image: veenay910/mongo-init-image:11
+          ports:
+            - containerPort: 27017
+
+          # ✅ Liveness Probe (restart if unhealthy)
+          livenessProbe:
+            tcpSocket:
+              port: 27017
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          # ✅ Readiness Probe (traffic only when ready)
+          readinessProbe:
+            tcpSocket:
+              port: 27017
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
