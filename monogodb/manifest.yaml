@@ -1,27 +1,29 @@
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongodb
   namespace: roboshop-dev
-  lables: 
+  labels:
     pro: roboshop
-    componenet: mongodb
+    component: mongodb
     tier: db
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pro: roboshop
+      component: mongodb
+      tier: db
+
+  template:
+    metadata:
+      labels:
+        pro: roboshop
+        component: mongodb
+        tier: db
+
     spec:
-      replicas: 1
-      selector:
-        matchLabels:
-           pro: roboshop
-           omponenet: mongodb
-           tier: db
-      template:
-        metadata:
-          labels:
-            pro: roboshop
-            componenet: mongodb
-            tier: db
-        spec:
-          containers:
-            - name: myapp
-              image: veenay910/mongo-init-image:11
-    
+      containers:
+        - name: mongodb
+          image: veenay910/mongo-init-image:11
