@@ -6,7 +6,7 @@ metadata:
     pro: roboshop
 spec:
   containers:
-  - name: debug-Cont
+  - name: debug-cont
     image: veenay910/debug
     resources:
       limits:
